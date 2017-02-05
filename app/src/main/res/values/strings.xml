@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Foonder</string>
+
+    <string name="title_activity_start">Foonder</string>
+    <string name="start_game">Start Game</string>
+    <string name="instructions">You have 30 seconds to tap left or right depending on the instructions given.</string>
+    <string name="instructions2">Good luck!</string>
+    <string name="play_again">Play Again</string>
+    <string name="score">Score:</string>
+    <string name="longest_spree">Longest Spree:</string>
+    <string name="right">RIGHT</string>
+    <string name="left">LEFT</string>
+</resources>

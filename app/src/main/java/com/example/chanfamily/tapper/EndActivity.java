@@ -1,0 +1,34 @@
+package com.example.chanfamily.tapper;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class EndActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_end);
+
+        Intent intent = getIntent();
+
+        String score = intent.getStringExtra(MainActivity.SCORE);
+        String spree = intent.getStringExtra(MainActivity.SPREE);
+
+        TextView end_score_value = (TextView) findViewById(R.id.end_score_value);
+        TextView end_spree_value = (TextView) findViewById(R.id.end_spree_value);
+
+        end_score_value.setText(score);
+        end_spree_value.setText(spree);
+
+    }
+
+    public void playAgain(View view){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+}
