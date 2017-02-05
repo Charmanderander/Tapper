@@ -52,18 +52,25 @@ public class MainActivity extends AppCompatActivity {
         if (currInst.getText().toString().equals(inst)){
             currScore += 1;
             currSpree += 1;
+            updateSpree(currSpree);
 
             score.setText(Integer.toString(currScore));
             spree.setText(Integer.toString(currSpree));
         } else {
-            if (currSpree > highestSpree) {
-                highestSpree = currSpree;
-            }
+            updateSpree(currSpree);
             currSpree = 0;
             spree.setText(Integer.toString(currSpree));
         }
 
+
+
         setInst();
+    }
+
+    private void updateSpree(int currSpree){
+        if (currSpree > highestSpree) {
+            highestSpree = currSpree;
+        }
     }
 
     private void setInst(){
