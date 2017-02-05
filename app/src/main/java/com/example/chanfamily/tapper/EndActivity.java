@@ -31,4 +31,9 @@ public class EndActivity extends AppCompatActivity {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
+
+    public void returnMainMenu(View view){
+        Intent intent = new Intent(this,StartActivity.class);
+        startActivity(intent);
+    }
 }
