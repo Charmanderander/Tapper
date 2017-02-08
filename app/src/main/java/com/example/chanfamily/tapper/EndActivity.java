@@ -27,6 +27,14 @@ public class EndActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent setIntent = new Intent(this,StartActivity.class);
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(setIntent);
+    }
+
     public void playAgain(View view){
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
@@ -36,4 +44,6 @@ public class EndActivity extends AppCompatActivity {
         Intent intent = new Intent(this,StartActivity.class);
         startActivity(intent);
     }
+
+
 }

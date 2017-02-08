@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     public void startTimer(int Seconds,final TextView timer){
 
 
-        new CountDownTimer(Seconds* 1000+1000, 1000) {
+        new CountDownTimer(Seconds* 1000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 int seconds = (int) (millisUntilFinished / 1000);
