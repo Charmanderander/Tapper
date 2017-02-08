@@ -61,10 +61,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/button"
         android:onClick="playAgain"
+        android:layout_marginTop="58dp"
         android:layout_below="@+id/spree_text"
-        android:layout_toRightOf="@+id/score_text"
-        android:layout_toEndOf="@+id/score_text"
-        android:layout_marginTop="57dp" />
+        android:layout_alignLeft="@+id/spree_text"
+        android:layout_alignStart="@+id/spree_text"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp" />
 
     <Button
         android:text="MENU"
@@ -72,10 +74,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/menu_button"
         android:onClick="returnMainMenu"
+        android:layout_marginRight="39dp"
+        android:layout_marginEnd="39dp"
         android:layout_alignBaseline="@+id/button"
         android:layout_alignBottom="@+id/button"
-        android:layout_toRightOf="@+id/button"
-        android:layout_toEndOf="@+id/button"
-        android:layout_marginLeft="47dp"
-        android:layout_marginStart="47dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
