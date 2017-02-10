@@ -20,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
 
     private final String[] nextInst = {"LEFT", "RIGHT"};
 
+    private CountDownTimer countDownTimer = null;
+
+    private int remainingTime = 10;
+
     private int highestSpree = 0;
 
     Random random = new Random();
@@ -30,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setInst();
-
-        TextView timer = (TextView) findViewById(R.id.timer_value);
-        startTimer(10, timer);
     }
 
     public void leftClick(View view){
@@ -82,13 +83,17 @@ public class MainActivity extends AppCompatActivity {
         inst.setText(nextInst[index]);
         Animation text_pop = AnimationUtils.loadAnimation(this, R.anim.text_pop);
         inst.startAnimation(text_pop);
-
     }
 
-    public void startTimer(int Seconds,final TextView timer){
+    private void startTimer(int Seconds){
+        TextView timer = (TextView) findViewById(R.id.timer_value);
+        makeTimer(Seconds, timer);
+        countDownTimer.start();
+    }
 
+    public void makeTimer(int Seconds,final TextView timer){
 
-        new CountDownTimer(Seconds* 1000, 1000) {
+        countDownTimer = new CountDownTimer(Seconds* 1000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 int seconds = (int) (millisUntilFinished / 1000);
@@ -102,7 +107,25 @@ public class MainActivity extends AppCompatActivity {
                 TextView score = (TextView) findViewById(R.id.score_value);
                 endScreen(score.getText().toString(), Integer.toString(highestSpree));
             }
-        }.start();
+        };
+
+    }
+
+    @Override
+    public void onStop(){
+        super.onPause();
+        TextView timer = (TextView) findViewById(R.id.timer_value);
+        String time = timer.getText().toString().split(":")[2];
+        remainingTime = Integer.parseInt(time);
+        System.out.println("Pausing app");
+        System.out.println(countDownTimer);
+        countDownTimer.cancel();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        startTimer(remainingTime);
     }
 
     private void endScreen(String score, String spree){
