@@ -16,6 +16,12 @@ public class EndActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (savedInstanceState != null) {
+            setContentView(R.layout.activity_end_lan);
+            // Restore value of members from saved state
+            setScore(savedInstanceState.getInt(STATE_SCORE));
+            setSpree(savedInstanceState.getInt(STATE_SPREE));
+        } else {
 
             setContentView(shaker.maker.chanfamily.tapper.R.layout.activity_end);
 
@@ -29,6 +35,8 @@ public class EndActivity extends AppCompatActivity {
 
             end_score_value.setText(score);
             end_spree_value.setText(spree);
+        }
+
     }
 
     @Override
@@ -49,6 +57,21 @@ public class EndActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Getting current state parameters
+        int state_score = getScore();
+        int state_spree = getSpree();
+
+        // Save the user's current game state
+        savedInstanceState.putInt(STATE_SCORE, state_score);
+        savedInstanceState.putInt(STATE_SPREE, state_spree);
+
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
     private int getScore(){
         TextView score = (TextView) findViewById(R.id.end_score_value);
         int score_val = Integer.parseInt(score.getText().toString());
@@ -62,13 +85,13 @@ public class EndActivity extends AppCompatActivity {
     }
 
     private void setScore(int score_val){
-        TextView score = (TextView) findViewById(R.id.end_spree_value);
-        score.setText(score_val);
+        TextView score = (TextView) findViewById(R.id.end_score_value);
+        score.setText(Integer.toString(score_val));
     }
 
     private void setSpree(int spree_val){
         TextView spree = (TextView) findViewById(R.id.end_spree_value);
-        spree.setText(spree_val);
+        spree.setText(Integer.toString(spree_val));
     }
 
 

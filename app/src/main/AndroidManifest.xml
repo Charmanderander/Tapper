@@ -12,8 +12,7 @@
         <activity android:name="shaker.maker.chanfamily.tapper.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"/>
 
-        <activity android:name="shaker.maker.chanfamily.tapper.EndActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity android:name="shaker.maker.chanfamily.tapper.EndActivity"/>
 
         <activity android:name="shaker.maker.chanfamily.tapper.StartActivity"
             android:configChanges="orientation|screenSize|keyboardHidden">
