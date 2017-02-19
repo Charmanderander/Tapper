@@ -37,10 +37,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Check whether we're recreating a previously destroyed instance
+        if (savedInstanceState != null) {
+
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+                setContentView(R.layout.activity_main_lan);
+            } else {
+                setContentView(R.layout.activity_main);
+            }
+
+            System.out.println("restoring state");
+
+            // Restore value of members from saved state
+            setScore(savedInstanceState.getInt(STATE_SCORE));
+            setSpree(savedInstanceState.getInt(STATE_SPREE));
+            setTime(savedInstanceState.getInt(STATE_TIME));
+            setInst(savedInstanceState.getString(STATE_INST));
+        } else {
             setContentView(shaker.maker.chanfamily.tapper.R.layout.activity_main);
+            setTime(remainingTime);
             setInst();
-
-
+        }
     }
 
     public void leftClick(View view){
@@ -114,11 +131,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onResume(){
-        super.onResume();
-
-        // On resuming the app, reinstate the remaining time
-        setTime(remainingTime);
+    public void onStart(){
+        super.onStart();
+        countDownTimer.start();
     }
 
     private void endScreen(String score, String spree){
@@ -130,22 +145,41 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+
+        // Getting current state parameters
+        String state_inst = getInst();
+        int state_time = getTime();
+        int state_score = getScore();
+        int state_spree = getSpree();
+
+        // Save the user's current game state
+        savedInstanceState.putInt(STATE_SCORE, state_score);
+        savedInstanceState.putInt(STATE_SPREE, state_spree);
+        savedInstanceState.putInt(STATE_TIME, state_time);
+        savedInstanceState.putString(STATE_INST, state_inst);
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
 
     // Getter and setter methods
     private void setScore(int score_val){
         TextView score = (TextView) findViewById(R.id.score_value);
-        score.setText(score_val);
+        score.setText(Integer.toString(score_val));
     }
 
     private void setSpree(int spree_val){
         TextView spree = (TextView) findViewById(R.id.spree_value);
-        spree.setText(spree_val);
+        spree.setText(Integer.toString(spree_val));
     }
 
     private void setTime(int time_val){
+        System.out.println("setting" + Integer.toString(time_val));
         TextView timer = (TextView) findViewById(R.id.timer_value);
         makeTimer(time_val, timer);
-        countDownTimer.start();
     }
 
     private void setInst(String inst_val){
@@ -172,7 +206,6 @@ public class MainActivity extends AppCompatActivity {
         int time_val = Integer.parseInt(timer.getText().toString().split(":")[2]);
         return time_val;
     }
-
 
     private String getInst(){
         TextView inst = (TextView) findViewById(R.id.instruction);

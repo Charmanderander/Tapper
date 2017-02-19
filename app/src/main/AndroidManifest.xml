@@ -9,8 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="shaker.maker.chanfamily.tapper.MainActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity android:name="shaker.maker.chanfamily.tapper.MainActivity"/>
 
         <activity android:name="shaker.maker.chanfamily.tapper.EndActivity"/>
 
