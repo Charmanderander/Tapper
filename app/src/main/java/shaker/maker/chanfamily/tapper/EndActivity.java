@@ -16,11 +16,6 @@ public class EndActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (savedInstanceState != null) {
-            // Restore value of members from saved state
-            setScore(savedInstanceState.getInt(STATE_SCORE));
-            setSpree(savedInstanceState.getInt(STATE_SPREE));
-        } else {
 
             setContentView(shaker.maker.chanfamily.tapper.R.layout.activity_end);
 
@@ -34,8 +29,6 @@ public class EndActivity extends AppCompatActivity {
 
             end_score_value.setText(score);
             end_spree_value.setText(spree);
-        }
-
     }
 
     @Override
@@ -54,21 +47,6 @@ public class EndActivity extends AppCompatActivity {
     public void returnMainMenu(View view){
         Intent intent = new Intent(this,StartActivity.class);
         startActivity(intent);
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        // Getting current state parameters
-        int state_score = getScore();
-        int state_spree = getSpree();
-
-        // Save the user's current game state
-        savedInstanceState.putInt(STATE_SCORE, state_score);
-        savedInstanceState.putInt(STATE_SPREE, state_spree);
-
-
-        // Always call the superclass so it can save the view hierarchy state
-        super.onSaveInstanceState(savedInstanceState);
     }
 
     private int getScore(){

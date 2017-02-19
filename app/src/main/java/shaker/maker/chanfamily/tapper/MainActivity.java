@@ -37,18 +37,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Check whether we're recreating a previously destroyed instance
-        if (savedInstanceState != null) {
-            System.out.println("restoring");
-            // Restore value of members from saved state
-            setScore(savedInstanceState.getInt(STATE_SCORE));
-            setSpree(savedInstanceState.getInt(STATE_SPREE));
-            setTime(savedInstanceState.getInt(STATE_TIME));
-            setInst(savedInstanceState.getString(STATE_INST));
-        } else {
             setContentView(shaker.maker.chanfamily.tapper.R.layout.activity_main);
             setInst();
-        }
+
 
     }
 
@@ -113,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
                 endScreen(score, spree);
             }
         };
-
     }
 
     @Override
@@ -138,25 +128,6 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(SCORE,score);
         intent.putExtra(SPREE,spree);
         startActivity(intent);
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        // Getting current state parameters
-        String state_inst = getInst();
-        int state_time = getTime();
-        int state_score = getScore();
-        int state_spree = getSpree();
-
-        // Save the user's current game state
-        savedInstanceState.putInt(STATE_SCORE, state_score);
-        savedInstanceState.putInt(STATE_SPREE, state_spree);
-        savedInstanceState.putInt(STATE_TIME, state_time);
-        savedInstanceState.putString(STATE_INST, state_inst);
-
-
-        // Always call the superclass so it can save the view hierarchy state
-        super.onSaveInstanceState(savedInstanceState);
     }
 
 
