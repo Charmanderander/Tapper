@@ -1,4 +1,4 @@
-package com.example.chanfamily.tapper;
+package shaker.maker.chanfamily.tapper;
 
 import org.junit.Test;
 

@@ -19,8 +19,9 @@
         android:textColor="#ff0000"
         android:id="@+id/instruction"
         android:layout_below="@+id/score_value"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="145dp" />
+        android:layout_marginTop="70dp"
+        android:layout_alignLeft="@+id/timer_value"
+        android:layout_alignStart="@+id/timer_value" />
 
     <TextView
         android:text="@string/score"

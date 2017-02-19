@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="49dp"
+        android:layout_marginBottom="30dp"
         android:id="@+id/start_button"
         android:onClick="startGame"/>
 
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="107dp"
+        android:layout_marginTop="70dp"
         android:id="@+id/welcome_text" />
 
     <TextView

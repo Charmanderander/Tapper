@@ -1,4 +1,4 @@
-package com.example.chanfamily.tapper;
+package shaker.maker.chanfamily.tapper;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
