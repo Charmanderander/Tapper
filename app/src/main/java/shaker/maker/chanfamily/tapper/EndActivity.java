@@ -57,20 +57,6 @@ public class EndActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_end_lan);
-            System.out.println("landscape");
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            System.out.println("portrait");
-            setContentView(R.layout.activity_end);
-        }
-    }
-
-    @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // Getting current state parameters
         int state_score = getScore();

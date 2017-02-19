@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Getter and setter methods
     private void setScore(int score_val){
-        TextView score = (TextView) findViewById(R.id.spree_value);
+        TextView score = (TextView) findViewById(R.id.score_value);
         score.setText(score_val);
     }
 
