@@ -17,7 +17,12 @@ public class EndActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState != null) {
-            setContentView(R.layout.activity_end_lan);
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+                setContentView(R.layout.activity_end_lan);
+            } else {
+                setContentView(R.layout.activity_end);
+            }
+
             // Restore value of members from saved state
             setScore(savedInstanceState.getInt(STATE_SCORE));
             setSpree(savedInstanceState.getInt(STATE_SPREE));
