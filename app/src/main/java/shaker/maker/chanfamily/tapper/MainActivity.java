@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Check whether we're recreating a previously destroyed instance
         if (savedInstanceState != null) {
+            System.out.println("restoring");
             // Restore value of members from saved state
             setScore(savedInstanceState.getInt(STATE_SCORE));
             setSpree(savedInstanceState.getInt(STATE_SPREE));
@@ -137,18 +138,6 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(SCORE,score);
         intent.putExtra(SPREE,spree);
         startActivity(intent);
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_main_lan);
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            setContentView(R.layout.activity_main);
-        }
     }
 
     @Override

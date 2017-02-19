@@ -9,21 +9,32 @@ import android.widget.TextView;
 
 public class EndActivity extends AppCompatActivity {
 
+    static final String STATE_SCORE = "STATE_SCORE";
+    static final String STATE_SPREE = "STATE_SPREE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(shaker.maker.chanfamily.tapper.R.layout.activity_end);
 
-        Intent intent = getIntent();
+        if (savedInstanceState != null) {
+            // Restore value of members from saved state
+            setScore(savedInstanceState.getInt(STATE_SCORE));
+            setSpree(savedInstanceState.getInt(STATE_SPREE));
+        } else {
 
-        String score = intent.getStringExtra(MainActivity.SCORE);
-        String spree = intent.getStringExtra(MainActivity.SPREE);
+            setContentView(shaker.maker.chanfamily.tapper.R.layout.activity_end);
 
-        TextView end_score_value = (TextView) findViewById(shaker.maker.chanfamily.tapper.R.id.end_score_value);
-        TextView end_spree_value = (TextView) findViewById(shaker.maker.chanfamily.tapper.R.id.end_spree_value);
+            Intent intent = getIntent();
 
-        end_score_value.setText(score);
-        end_spree_value.setText(spree);
+            String score = intent.getStringExtra(MainActivity.SCORE);
+            String spree = intent.getStringExtra(MainActivity.SPREE);
+
+            TextView end_score_value = (TextView) findViewById(shaker.maker.chanfamily.tapper.R.id.end_score_value);
+            TextView end_spree_value = (TextView) findViewById(shaker.maker.chanfamily.tapper.R.id.end_spree_value);
+
+            end_score_value.setText(score);
+            end_spree_value.setText(spree);
+        }
 
     }
 
@@ -51,12 +62,49 @@ public class EndActivity extends AppCompatActivity {
 
         // Checks the orientation of the screen
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_main_lan);
+            setContentView(R.layout.activity_end_lan);
             System.out.println("landscape");
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
             System.out.println("portrait");
-            setContentView(R.layout.activity_main);
+            setContentView(R.layout.activity_end);
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Getting current state parameters
+        int state_score = getScore();
+        int state_spree = getSpree();
+
+        // Save the user's current game state
+        savedInstanceState.putInt(STATE_SCORE, state_score);
+        savedInstanceState.putInt(STATE_SPREE, state_spree);
+
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    private int getScore(){
+        TextView score = (TextView) findViewById(R.id.end_score_value);
+        int score_val = Integer.parseInt(score.getText().toString());
+        return score_val;
+    }
+
+    private int getSpree(){
+        TextView spree = (TextView) findViewById(R.id.end_spree_value);
+        int spree_val = Integer.parseInt(spree.getText().toString());
+        return spree_val;
+    }
+
+    private void setScore(int score_val){
+        TextView score = (TextView) findViewById(R.id.end_spree_value);
+        score.setText(score_val);
+    }
+
+    private void setSpree(int spree_val){
+        TextView spree = (TextView) findViewById(R.id.end_spree_value);
+        spree.setText(spree_val);
     }
 
 
