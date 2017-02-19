@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
             public void onFinish() {
                 String score = Integer.toString(getScore());
-                String spree = Integer.toString(getSpree());
+                String spree = Integer.toString(highestSpree);
                 endScreen(score, spree);
             }
         };
