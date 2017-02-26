@@ -128,7 +128,13 @@ public class MainActivity extends AppCompatActivity {
             }
 
             public void onFinish() {
-                String score = Integer.toString(getScore());
+                String score;
+                if (getScore() == 0){
+                    // No mistakes were made
+                    score = Integer.toString(getSpree());
+                } else {
+                    score = Integer.toString(getScore());
+                }
                 endScreen(score);
             }
         };
@@ -226,6 +232,11 @@ public class MainActivity extends AppCompatActivity {
         TextView inst = (TextView) findViewById(R.id.instruction);
         String inst_val = inst.getText().toString();
         return inst_val;
+    }
+
+    public void playAgain(View view){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 
 }

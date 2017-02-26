@@ -6,8 +6,8 @@
     <string name="instructions">You have 10 seconds to tap left or right depending on the instructions given.</string>
     <string name="instructions2">Good luck!</string>
     <string name="play_again">Play Again</string>
-    <string name="score">Highest Score:</string>
-    <string name="longest_spree">Current Score:</string>
+    <string name="score">Highest Score</string>
+    <string name="longest_spree">Current Score</string>
     <string name="right">RIGHT</string>
     <string name="left">LEFT</string>
 </resources>

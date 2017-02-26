@@ -22,8 +22,25 @@
         />
 
 
-    <Button
-        android:text="@string/play_again"
+
+    <ImageButton
+        android:src="@drawable/home"
+        android:background="@drawable/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menu_button"
+        android:onClick="returnMainMenu"
+        android:layout_marginRight="39dp"
+        android:layout_marginEnd="39dp"
+        android:layout_alignBaseline="@+id/button"
+        android:layout_alignBottom="@+id/button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <ImageButton
+        android:src="@drawable/restart"
+        android:background="@drawable/restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button"
@@ -35,16 +52,4 @@
         android:layout_marginLeft="31dp"
         android:layout_marginStart="31dp"/>
 
-    <Button
-        android:text="MENU"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/menu_button"
-        android:onClick="returnMainMenu"
-        android:layout_marginRight="39dp"
-        android:layout_marginEnd="39dp"
-        android:layout_alignBaseline="@+id/button"
-        android:layout_alignBottom="@+id/button"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
 </RelativeLayout>
