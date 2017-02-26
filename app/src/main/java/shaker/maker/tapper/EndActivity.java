@@ -1,4 +1,4 @@
-package shaker.maker.chanfamily.tapper;
+package shaker.maker.tapper;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import shaker.maker.chanfamily.tapper.R;
 
 public class EndActivity extends AppCompatActivity {
 
@@ -16,19 +18,18 @@ public class EndActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            setContentView(R.layout.activity_end_lan);
+        } else {
+            setContentView(R.layout.activity_end);
+        }
+
         if (savedInstanceState != null) {
-            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-                setContentView(R.layout.activity_end_lan);
-            } else {
-                setContentView(R.layout.activity_end);
-            }
 
             // Restore value of members from saved state
             setScore(savedInstanceState.getInt(STATE_SCORE));
             setSpree(savedInstanceState.getInt(STATE_SPREE));
         } else {
-
-            setContentView(shaker.maker.chanfamily.tapper.R.layout.activity_end);
 
             Intent intent = getIntent();
 
@@ -41,9 +42,7 @@ public class EndActivity extends AppCompatActivity {
             end_score_value.setText(score);
             end_spree_value.setText(spree);
         }
-
     }
-
     @Override
     public void onBackPressed() {
         Intent setIntent = new Intent(this,StartActivity.class);

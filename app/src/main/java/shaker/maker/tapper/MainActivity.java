@@ -1,4 +1,4 @@
-package shaker.maker.chanfamily.tapper;
+package shaker.maker.tapper;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -11,6 +11,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import java.util.Random;
+
+import shaker.maker.chanfamily.tapper.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
         // Check whether we're recreating a previously destroyed instance
         if (savedInstanceState != null) {
 
@@ -46,15 +50,18 @@ public class MainActivity extends AppCompatActivity {
                 setContentView(R.layout.activity_main);
             }
 
-            System.out.println("restoring state");
-
             // Restore value of members from saved state
             setScore(savedInstanceState.getInt(STATE_SCORE));
             setSpree(savedInstanceState.getInt(STATE_SPREE));
             setTime(savedInstanceState.getInt(STATE_TIME));
             setInst(savedInstanceState.getString(STATE_INST));
         } else {
-            setContentView(shaker.maker.chanfamily.tapper.R.layout.activity_main);
+
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+                setContentView(R.layout.activity_main_lan);
+            } else {
+                setContentView(R.layout.activity_main);
+            }
             setTime(remainingTime);
             setInst();
         }
@@ -123,6 +130,10 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
+    //TODO
+    /* when user exits the app, the state is saved, but is not instantiated properly
+     */
+
     @Override
     public void onStop(){
         super.onPause();
@@ -131,11 +142,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
         countDownTimer.start();
     }
-
     private void endScreen(String score, String spree){
         Intent intent = new Intent(this, EndActivity.class);
 
@@ -153,6 +163,8 @@ public class MainActivity extends AppCompatActivity {
         int state_time = getTime();
         int state_score = getScore();
         int state_spree = getSpree();
+
+        System.out.println("Saving state " + Integer.toString(state_time));
 
         // Save the user's current game state
         savedInstanceState.putInt(STATE_SCORE, state_score);
@@ -177,7 +189,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setTime(int time_val){
-        System.out.println("setting" + Integer.toString(time_val));
         TextView timer = (TextView) findViewById(R.id.timer_value);
         makeTimer(time_val, timer);
     }

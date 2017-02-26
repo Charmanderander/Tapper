@@ -9,12 +9,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="shaker.maker.chanfamily.tapper.MainActivity"/>
+        <activity android:name="shaker.maker.tapper.MainActivity"/>
 
-        <activity android:name="shaker.maker.chanfamily.tapper.EndActivity"/>
+        <activity android:name="shaker.maker.tapper.EndActivity"/>
 
-        <activity android:name="shaker.maker.chanfamily.tapper.StartActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden">
+        <activity android:name="shaker.maker.tapper.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
