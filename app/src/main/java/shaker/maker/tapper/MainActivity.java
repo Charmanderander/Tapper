@@ -1,8 +1,10 @@
 package shaker.maker.tapper;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.CountDownTimer;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -53,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
             // Restore value of members from saved state
             setScore(savedInstanceState.getInt(STATE_SCORE));
             setSpree(savedInstanceState.getInt(STATE_SPREE));
-            remainingTime = savedInstanceState.getInt(STATE_TIME);
             setInst(savedInstanceState.getString(STATE_INST));
+            remainingTime = savedInstanceState.getInt(STATE_TIME);
         } else {
 
             if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
@@ -76,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void validateScore(String inst){
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         TextView currInst = (TextView) findViewById(shaker.maker.chanfamily.tapper.R.id.instruction);
         TextView score = (TextView) findViewById(shaker.maker.chanfamily.tapper.R.id.score_value);
         TextView spree = (TextView) findViewById(shaker.maker.chanfamily.tapper.R.id.spree_value);
@@ -84,14 +87,18 @@ public class MainActivity extends AppCompatActivity {
         int currSpree = Integer.parseInt(spree.getText().toString());
 
         if (currInst.getText().toString().equals(inst)){
-            currScore += 1;
+            // Hits correctly
+            v.vibrate(100);
             currSpree += 1;
             updateSpree(currSpree);
 
             score.setText(Integer.toString(currScore));
             spree.setText(Integer.toString(currSpree));
         } else {
+            //Hits wrongly
+            v.vibrate(500);
             updateSpree(currSpree);
+            score.setText(Integer.toString(highestSpree));
             currSpree = 0;
             spree.setText(Integer.toString(currSpree));
         }
@@ -124,8 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
             public void onFinish() {
                 String score = Integer.toString(getScore());
-                String spree = Integer.toString(highestSpree);
-                endScreen(score, spree);
+                endScreen(score);
             }
         };
     }
@@ -147,12 +153,11 @@ public class MainActivity extends AppCompatActivity {
         setTime(remainingTime);
         countDownTimer.start();
     }
-    private void endScreen(String score, String spree){
+    private void endScreen(String score){
         Intent intent = new Intent(this, EndActivity.class);
 
         // Passing Score and Spree to end screen
         intent.putExtra(SCORE,score);
-        intent.putExtra(SPREE,spree);
         startActivity(intent);
     }
 
