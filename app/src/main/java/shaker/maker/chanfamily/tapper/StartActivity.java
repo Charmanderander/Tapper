@@ -1,14 +1,10 @@
-package shaker.maker.tapper;
+package shaker.maker.chanfamily.tapper;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
-import shaker.maker.chanfamily.tapper.R;
 
 public class StartActivity extends AppCompatActivity {
 

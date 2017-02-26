@@ -1,4 +1,4 @@
-package shaker.maker.tapper;
+package shaker.maker.chanfamily.tapper;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
-import shaker.maker.chanfamily.tapper.R;
 
 public class EndActivity extends AppCompatActivity {
 

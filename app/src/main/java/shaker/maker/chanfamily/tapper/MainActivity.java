@@ -1,4 +1,4 @@
-package shaker.maker.tapper;
+package shaker.maker.chanfamily.tapper;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,8 +13,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import java.util.Random;
-
-import shaker.maker.chanfamily.tapper.R;
 
 public class MainActivity extends AppCompatActivity {
 
