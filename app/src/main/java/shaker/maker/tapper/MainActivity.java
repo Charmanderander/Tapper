@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             // Restore value of members from saved state
             setScore(savedInstanceState.getInt(STATE_SCORE));
             setSpree(savedInstanceState.getInt(STATE_SPREE));
-            setTime(savedInstanceState.getInt(STATE_TIME));
+            remainingTime = savedInstanceState.getInt(STATE_TIME);
             setInst(savedInstanceState.getString(STATE_INST));
         } else {
 
@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        setTime(remainingTime);
         countDownTimer.start();
     }
     private void endScreen(String score, String spree){
