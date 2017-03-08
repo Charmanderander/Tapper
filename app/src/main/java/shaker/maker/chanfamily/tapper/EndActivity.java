@@ -1,11 +1,15 @@
 package shaker.maker.chanfamily.tapper;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class EndActivity extends AppCompatActivity {
 
@@ -25,6 +29,7 @@ public class EndActivity extends AppCompatActivity {
 
             // Restore value of members from saved state
             setScore(savedInstanceState.getInt(STATE_SCORE));
+
         } else {
 
             Intent intent = getIntent();
@@ -34,6 +39,12 @@ public class EndActivity extends AppCompatActivity {
             TextView end_score_value = (TextView) findViewById(R.id.end_score_value);
 
             end_score_value.setText(score);
+
+            TextView highscore_value = (TextView) findViewById(R.id.highscore_value);
+
+            saveHighScore(Integer.parseInt(score));
+
+            highscore_value.setText(Integer.toString(getHighScore()));
         }
     }
     @Override
@@ -77,6 +88,24 @@ public class EndActivity extends AppCompatActivity {
     private void setScore(int score_val){
         TextView score = (TextView) findViewById(R.id.end_score_value);
         score.setText(Integer.toString(score_val));
+    }
+
+    private void saveHighScore(int score){
+        SharedPreferences prefs = this.getSharedPreferences("HighScore", Context.MODE_PRIVATE);
+        int highscore = prefs.getInt("highscore", 0); //0 is the default value
+
+        if (score > highscore){
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putInt("highscore", score);
+            editor.commit();
+        }
+
+    }
+
+    private int getHighScore(){
+        SharedPreferences prefs = this.getSharedPreferences("HighScore", Context.MODE_PRIVATE);
+        int highscore = prefs.getInt("highscore", 0); //0 is the default value
+        return highscore;
     }
 
 }

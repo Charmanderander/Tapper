@@ -21,6 +21,29 @@
         android:layout_centerHorizontal="true"
         />
 
+    <TextView
+        android:text="@string/highscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/highscore_text"
+        android:layout_marginTop="280dp"
+        android:textSize="20sp"
+        android:fontFamily="monospace"
+        android:textColor="#ff0000"
+        android:layout_marginLeft="60sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/highscore_value"
+        android:layout_marginTop="280dp"
+        android:textSize="20sp"
+        android:fontFamily="monospace"
+        android:textColor="#ff0000"
+        android:layout_marginLeft="220sp"
+        />
+
     <ImageButton
         android:src="@drawable/home"
         android:background="@drawable/home"

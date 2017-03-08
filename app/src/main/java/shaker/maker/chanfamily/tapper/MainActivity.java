@@ -129,8 +129,8 @@ public class MainActivity extends AppCompatActivity {
 
             public void onFinish() {
                 String score;
-                if (getScore() == 0){
-                    // No mistakes were made
+                if (getSpree() > getScore()){
+                    // If current spree greater than score
                     score = Integer.toString(getSpree());
                 } else {
                     score = Integer.toString(getScore());
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onStop(){
-        super.onPause();
+        super.onStop();
         remainingTime = getTime();
         countDownTimer.cancel();
     }
